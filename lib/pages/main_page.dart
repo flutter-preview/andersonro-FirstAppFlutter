@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trilhaapp/pages/dados_cadastrais_page.dart';
+import 'package:trilhaapp/pages/busca_cep_page.dart';
 import 'package:trilhaapp/pages/card_page.dart';
 import 'package:trilhaapp/pages/images_page.dart';
 import 'package:trilhaapp/pages/list_view_h_page.dart';
 import 'package:trilhaapp/pages/list_view_v_page.dart';
-import 'package:trilhaapp/pages/tarefa_hive_page.dart';
-import 'package:trilhaapp/pages/tarefa_page.dart';
+import 'package:trilhaapp/pages/tarefa_sqlite_page.dart';
 import 'package:trilhaapp/shared/widgets/drawer_custon.dart';
 
 class MainPage extends StatefulWidget {
@@ -37,6 +35,8 @@ class _MainPageState extends State<MainPage> {
                   });
                 },
                 children: [
+                  //const TesteHttpPage(),
+                  const BuscaCepPage(),
                   const CardPage(),
                   Container(
                     color: Colors.blue,
@@ -44,7 +44,7 @@ class _MainPageState extends State<MainPage> {
                   const ImagensPage(),
                   const ListViewHorizontalPage(),
                   const ListViewVerticalPage(),
-                  const TarefaHivePage(),
+                  const TarefaSQLitePage(),
                 ],
               ),
             ),
@@ -55,6 +55,7 @@ class _MainPageState extends State<MainPage> {
                 currentIndex: positionPage,
                 type: BottomNavigationBarType.fixed,
                 items: const <BottomNavigationBarItem> [
+                  BottomNavigationBarItem(icon: Icon(Icons.search), label: "CEP"),
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: "Page 1"),
                   BottomNavigationBarItem(icon: Icon(Icons.add), label: "Page 2"),
                   BottomNavigationBarItem(icon: Icon(Icons.person), label: "Page 3"),

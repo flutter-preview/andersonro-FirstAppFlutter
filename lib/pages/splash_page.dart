@@ -17,16 +17,17 @@ class _SplashPageState extends State<SplashPage> {
 
   bool logado = false;
 
-  void loadPrefs() async {
-    await Future.delayed(const Duration(seconds: 2));
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? prefsLogado = prefs.getString(AppPrefs.APP_PREFS_EMAIL);
-    print("prefsLogado: ${prefsLogado}");
-    if (prefsLogado != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
-    }else {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
-    }
+  void loadPrefs() {
+    Future.delayed(const Duration(seconds: 2), () async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? prefsLogado = prefs.getString(AppPrefs.APP_PREFS_EMAIL);
+      print("prefsLogado: ${prefsLogado}");
+      if (prefsLogado != null) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
+      }else {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+      }
+    });
   }
 
   @override
