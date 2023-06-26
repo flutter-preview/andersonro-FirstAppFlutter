@@ -10,6 +10,8 @@ import 'package:trilhaapp/pages/navigationbar_custon/navigationbar_custom_page.d
 import 'package:trilhaapp/pages/numeros_aleatorios_pages.dart';
 import 'package:trilhaapp/pages/porcent_indicator_page.dart';
 import 'package:trilhaapp/pages/posts_page.dart';
+import 'package:trilhaapp/pages/tarefa_back4App_page.dart';
+import 'package:trilhaapp/repositores/tarefas_back4app_repository.dart';
 import 'package:trilhaapp/shared/widgets/app_prefs.dart';
 
 class DrawerCuston extends StatefulWidget {
@@ -43,8 +45,7 @@ class _DrawerCustonState extends State<DrawerCuston> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           InkWell(
             onTap: () {
@@ -278,6 +279,33 @@ class _DrawerCustonState extends State<DrawerCuston> {
                   MaterialPageRoute(
                       builder: (BuildContext context) =>
                       const HerosPage()));
+            },
+          ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 5, horizontal: 15),
+                width: double.infinity,
+                child: Row(
+                  children: const [
+                    //Icon(Icons.post_add),
+                    FaIcon(
+                      FontAwesomeIcons.person,
+                      color: Colors.blue,
+                    ),
+                    SizedBox(width: 5,),
+                    Text("Tarefas HTTP"),
+                  ],
+                )),
+            onTap: () async {
+
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                      const TarefaBack4AppPage()));
             },
           ),
           const Divider(),
