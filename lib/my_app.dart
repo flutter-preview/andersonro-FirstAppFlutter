@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/splash_page.dart';
-import 'package:trilhaapp/pages/tarefa_provide_page.dart';
 import 'package:trilhaapp/service/contador_service.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import 'package:trilhaapp/service/tarefa_provider_repository.dart';

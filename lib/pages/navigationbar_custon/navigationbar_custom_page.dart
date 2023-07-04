@@ -1,10 +1,13 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/brasil_fields_page.dart';
+import 'package:trilhaapp/pages/contador_getx_page.dart';
 import 'package:trilhaapp/pages/contador_mobx_page.dart';
 import 'package:trilhaapp/pages/contador_page.dart';
 import 'package:trilhaapp/pages/tarefa_provide_page.dart';
+import 'package:trilhaapp/service/contador_getx_controller.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import 'package:trilhaapp/service/tarefa_provider_repository.dart';
 
@@ -20,11 +23,12 @@ class _NavigationBarCustomState extends State<NavigationBarCustom>
   late TabController tabController;
   int positionPage = 0;
   double qtdMessage = 9;
+  var contadorGetXController = ContadorGetXController();
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(initialIndex: 0, length: 5, vsync: this);
+    tabController = TabController(initialIndex: 0, length: 6, vsync: this);
   }
 
   @override
@@ -74,6 +78,7 @@ class _NavigationBarCustomState extends State<NavigationBarCustom>
               )),
             ),
             BrasilFieldsPage(),
+            ContadorGetXPage(),
           ],
         ),
         bottomNavigationBar: Consumer<TarefaProviderRepository>(
@@ -83,7 +88,9 @@ class _NavigationBarCustomState extends State<NavigationBarCustom>
                 0: '9+',
                 1: tarefaProviderRepository.getTarefasNaoConcluidas().toString(),
                 2: Colors.amber,
-                3: qtdMessage.toString()
+                3: qtdMessage.toString(),
+                4: Colors.blue,
+                5: Colors.red
               },
               items: const [
                 TabItem(icon: Icons.home, title: 'Home'),
@@ -91,6 +98,7 @@ class _NavigationBarCustomState extends State<NavigationBarCustom>
                 TabItem(icon: Icons.add, title: 'Add'),
                 TabItem(icon: Icons.message, title: 'Message'),
                 TabItem(icon: Icons.comment_bank_outlined, title: 'Fields BR'),
+                TabItem(icon: Icons.calculate_outlined, title: 'GetX'),
               ],
               onTap: (int i) => tabController.index = i,
               controller: tabController,
